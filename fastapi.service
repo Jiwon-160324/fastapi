@@ -1,0 +1,14 @@
+[Unit]
+Description=fastapi application
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/app/src/
+Environment="PATH=/home/ubuntu/app/venv/bin"
+EnvironmentFile=/home/ubuntu/.env
+ExecStart=/home/ubuntu/app/venv/bin/fastapi run app/main.py --host 0.0.0.0 --port 8000
+
+[Install]
+WantedBy=multi-user.target
